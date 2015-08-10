@@ -21,11 +21,6 @@ class DataPoint(TimeStampedModel):
 
 
 
-class DataPointClassificationPermission(TimeStampedModel):
-    created_by = models.ForeignKey("auth.User")  
-    project = models.ForeignKey("cbh_core_model.Project")
-    data_point_classification = models.ForeignKey("cbh_datastore_model.DataPointClassificationPermission", related_name="l0_permission")
-
 
 
 
@@ -34,13 +29,17 @@ class DataPointClassification(TimeStampedModel):
     created_by = models.ForeignKey("auth.User")
     description = models.CharField(max_length=1000, null=True, blank=True, default=None)
     data_form_config = models.ForeignKey("cbh_core_model.DataFormConfig")
-    l0 = models.ForeignKey(DataPoint, related_name='l0', null=True, blank=True, default=None)
-    l1 = models.ForeignKey(DataPoint, related_name='l1',null=True, blank=True, default=None)
-    l2 = models.ForeignKey(DataPoint, related_name='l2',null=True, blank=True, default=None)
-    l3 = models.ForeignKey(DataPoint, related_name='l3',null=True, blank=True, default=None)
-    l4 = models.ForeignKey(DataPoint, related_name='l4',null=True, blank=True, default=None)
-
+    l0 = models.ForeignKey(DataPoint, related_name='l0', default=1)
+    l1 = models.ForeignKey(DataPoint, related_name='l1', default=1)
+    l2 = models.ForeignKey(DataPoint, related_name='l2', default=1)
+    l3 = models.ForeignKey(DataPoint, related_name='l3', default=1)
+    l4 = models.ForeignKey(DataPoint, related_name='l4', default=1)
+    l0_permitted_projects = models.ManyToManyField("cbh_core_model.Project", through='cbh_datastore_model.DataPointClassificationPermission')
     class Meta:
         unique_together = (('data_form_config','l0','l1','l2','l3','l4'))
 
+
+class DataPointClassificationPermission(TimeStampedModel):
+    project = models.ForeignKey("cbh_core_model.Project")
+    data_point_classification = models.ForeignKey("cbh_datastore_model.DataPointClassification", related_name="l0_permission")
 
