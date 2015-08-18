@@ -43,3 +43,12 @@ class DataPointClassificationPermission(TimeStampedModel):
     project = models.ForeignKey("cbh_core_model.Project")
     data_point_classification = models.ForeignKey("cbh_datastore_model.DataPointClassification", related_name="l0_permission")
 
+
+
+class Query(TimeStampedModel):
+    created_by = models.ForeignKey("auth.User")
+    query = hstore.SerializedDictionaryField()
+    aggs = hstore.SerializedDictionaryField()
+
+
+    
