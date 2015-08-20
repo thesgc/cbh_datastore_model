@@ -47,8 +47,9 @@ class DataPointClassificationPermission(TimeStampedModel):
 
 class Query(TimeStampedModel):
     created_by = models.ForeignKey("auth.User")
-    query = hstore.SerializedDictionaryField()
-    aggs = hstore.SerializedDictionaryField()
+    query = hstore.SerializedDictionaryField(default={})
+    filter = hstore.SerializedDictionaryField(default={})
+    aggs = hstore.SerializedDictionaryField(default={})
 
 
     
