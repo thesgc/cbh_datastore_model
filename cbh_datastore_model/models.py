@@ -35,6 +35,7 @@ class DataPointClassification(TimeStampedModel):
     l3 = models.ForeignKey(DataPoint, related_name='l3', default=1)
     l4 = models.ForeignKey(DataPoint, related_name='l4', default=1)
     l0_permitted_projects = models.ManyToManyField("cbh_core_model.Project", through='cbh_datastore_model.DataPointClassificationPermission')
+    parent = models.ForeignKey("self", null=True, default=None, related_name="children")
     class Meta:
         unique_together = (('data_form_config','l0','l1','l2','l3','l4'))
 
@@ -53,3 +54,13 @@ class Query(TimeStampedModel):
 
 
     
+# def add_parent_to_datapoint_classification(sender, instance, created, **kwargs):
+#     '''After saving the project make sure it has an l0 datapoint classification with th'''
+#     if created is True:
+#         instance.sync_permissions()
+#         instance.make_editor(instance.created_by)
+
+# post_save.connect(sync_permissions, sender=Project, dispatch_uid="proj_perms")
+
+
+
