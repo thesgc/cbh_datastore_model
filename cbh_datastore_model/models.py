@@ -36,8 +36,24 @@ class DataPointClassification(TimeStampedModel):
     l4 = models.ForeignKey(DataPoint, related_name='l4', default=1)
     l0_permitted_projects = models.ManyToManyField("cbh_core_model.Project", through='cbh_datastore_model.DataPointClassificationPermission')
     parent = models.ForeignKey("self", null=True, default=None, related_name="children")
+
     class Meta:
         unique_together = (('data_form_config','l0','l1','l2','l3','l4'))
+
+
+    def level_from(self):
+        level_from = ""
+        if  self.l4_id != 1:
+            return "l4"
+        if  self.l3_id != 1:
+            return "l3"
+        if  self.l2_id != 1:
+            return  "l2"
+        if  self.l1_id != 1:
+            return "l1"
+        if  self.l0_id != 1:
+            return  "l0"
+        return level_from
 
 
 class DataPointClassificationPermission(TimeStampedModel):
