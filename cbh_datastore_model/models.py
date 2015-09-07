@@ -39,6 +39,7 @@ class DataPointClassification(TimeStampedModel):
 
     class Meta:
         unique_together = (('data_form_config','l0','l1','l2','l3','l4'))
+        ordering = ['-modified']
 
 
     def level_from(self):
