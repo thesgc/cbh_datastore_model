@@ -8,6 +8,8 @@ from cbh_core_model.models import CustomFieldConfig
 
 
 
+
+
 class DataPoint(TimeStampedModel):
     '''Holds data for one hierachical section of a dataset. 
     Data that is related to the given custom field config is stored in project_data'''
