@@ -4,6 +4,7 @@ from django_extensions.db.models import TimeStampedModel
 from django_hstore import hstore
 from cbh_core_model.models import CustomFieldConfig
 
+from django.db.models.signals import post_save
 
 
 
@@ -59,6 +60,9 @@ class DataPointClassification(TimeStampedModel):
         return level_from
 
 
+
+
+
 class DataPointClassificationPermission(TimeStampedModel):
     project = models.ForeignKey("cbh_core_model.Project")
     data_point_classification = models.ForeignKey("cbh_datastore_model.DataPointClassification", related_name="l0_permission")
@@ -70,6 +74,11 @@ class Query(TimeStampedModel):
     query = hstore.SerializedDictionaryField(default={})
     filter = hstore.SerializedDictionaryField(default={})
     aggs = hstore.SerializedDictionaryField(default={})
+
+
+
+
+
 
 
     
