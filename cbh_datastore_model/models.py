@@ -59,8 +59,14 @@ class DataPointClassification(TimeStampedModel):
             return  "l0"
         return level_from
 
-
-
+    def all_child_generations_filter_dict(self):
+        levels = ["l0", "l1", "l2", "l3", "l4"]
+        levels = ["%s_id" % l for l in levels]
+        used_levels = {}
+        for lev in levels:
+            if getattr(self, lev) !=1:
+                used_levels[lev] = getattr(self, lev)
+        return used_levels
 
 
 class DataPointClassificationPermission(TimeStampedModel):
