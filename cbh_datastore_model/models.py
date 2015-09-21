@@ -8,6 +8,17 @@ from django.db.models.signals import post_save
 
 
 
+class Attachment(TimeStampedModel):
+    flowfile = models.ForeignKey("flowjs.FlowFile", null=True, blank=True, default=None)
+    created_by = models.ForeignKey("auth.User")
+    data_point_classification = models.ForeignKey("cbh_datastore_model.DataPointClassification")
+    chosen_data_form_config = models.ForeignKey("cbh_core_model.DataFormConfig",
+         help_text="The template data form config whose last level corresponds to the data being added")
+    attachment_custom_field_config = models.ForeignKey("cbh_core_model.CustomFieldConfig",
+         help_text="The schema of the table in this attachment")
+    sheet_name = models.CharField(max_length=100, default="")
+
+
 
 
 
