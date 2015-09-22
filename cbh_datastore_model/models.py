@@ -9,6 +9,7 @@ from django.db.models.signals import post_save
 
 
 class Attachment(TimeStampedModel):
+    number_of_rows = models.IntegerField(default=0)
     flowfile = models.ForeignKey("flowjs.FlowFile", null=True, blank=True, default=None)
     created_by = models.ForeignKey("auth.User")
     data_point_classification = models.ForeignKey("cbh_datastore_model.DataPointClassification")
