@@ -15,7 +15,8 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='datapointclassification',
             name='data_form_config',
-            field=models.ForeignKey(default=None, to='cbh_core_model.DataFormConfig'),
+            field=models.ForeignKey(
+                default=None, to='cbh_core_model.DataFormConfig'),
             preserve_default=False,
         ),
     ]

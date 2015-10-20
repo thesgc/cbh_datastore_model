@@ -17,10 +17,14 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='DataPointClassificationPermission',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('created', django_extensions.db.fields.CreationDateTimeField(default=django.utils.timezone.now, verbose_name='created', editable=False, blank=True)),
-                ('modified', django_extensions.db.fields.ModificationDateTimeField(default=django.utils.timezone.now, verbose_name='modified', editable=False, blank=True)),
-                ('data_point_classification', models.ForeignKey(related_name='l0_permission', to='cbh_datastore_model.DataPointClassification')),
+                ('id', models.AutoField(
+                    verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('created', django_extensions.db.fields.CreationDateTimeField(
+                    default=django.utils.timezone.now, verbose_name='created', editable=False, blank=True)),
+                ('modified', django_extensions.db.fields.ModificationDateTimeField(
+                    default=django.utils.timezone.now, verbose_name='modified', editable=False, blank=True)),
+                ('data_point_classification', models.ForeignKey(
+                    related_name='l0_permission', to='cbh_datastore_model.DataPointClassification')),
                 ('project', models.ForeignKey(to='cbh_core_model.Project')),
             ],
             options={
@@ -33,7 +37,8 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='datapointclassification',
             name='l0_permitted_projects',
-            field=models.ManyToManyField(to='cbh_core_model.Project', through='cbh_datastore_model.DataPointClassificationPermission'),
+            field=models.ManyToManyField(
+                to='cbh_core_model.Project', through='cbh_datastore_model.DataPointClassificationPermission'),
             preserve_default=True,
         ),
     ]

@@ -7,7 +7,8 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('cbh_datastore_model', '0008_datapointclassificationpermission_data_point_classification'),
+        ('cbh_datastore_model',
+         '0008_datapointclassificationpermission_data_point_classification'),
     ]
 
     operations = [

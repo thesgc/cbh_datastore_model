@@ -19,9 +19,12 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Query',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('created', django_extensions.db.fields.CreationDateTimeField(default=django.utils.timezone.now, verbose_name='created', editable=False, blank=True)),
-                ('modified', django_extensions.db.fields.ModificationDateTimeField(default=django.utils.timezone.now, verbose_name='modified', editable=False, blank=True)),
+                ('id', models.AutoField(
+                    verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('created', django_extensions.db.fields.CreationDateTimeField(
+                    default=django.utils.timezone.now, verbose_name='created', editable=False, blank=True)),
+                ('modified', django_extensions.db.fields.ModificationDateTimeField(
+                    default=django.utils.timezone.now, verbose_name='modified', editable=False, blank=True)),
                 ('query', django_hstore.fields.SerializedDictionaryField()),
                 ('aggs', django_hstore.fields.SerializedDictionaryField()),
                 ('created_by', models.ForeignKey(to=settings.AUTH_USER_MODEL)),

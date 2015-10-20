@@ -20,7 +20,8 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='attachment',
             name='chosen_data_form_config',
-            field=models.ForeignKey(help_text=b'The template data form config whose last level corresponds to the data being added', to='cbh_core_model.DataFormConfig'),
+            field=models.ForeignKey(
+                help_text=b'The template data form config whose last level corresponds to the data being added', to='cbh_core_model.DataFormConfig'),
             preserve_default=True,
         ),
     ]

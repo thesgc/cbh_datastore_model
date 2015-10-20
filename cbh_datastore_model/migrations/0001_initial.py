@@ -19,11 +19,16 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='DataPoint',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('created', django_extensions.db.fields.CreationDateTimeField(default=django.utils.timezone.now, verbose_name='created', editable=False, blank=True)),
-                ('modified', django_extensions.db.fields.ModificationDateTimeField(default=django.utils.timezone.now, verbose_name='modified', editable=False, blank=True)),
-                ('project_data', django_hstore.fields.SerializedDictionaryField()),
-                ('supplementary_data', django_hstore.fields.SerializedDictionaryField()),
+                ('id', models.AutoField(
+                    verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('created', django_extensions.db.fields.CreationDateTimeField(
+                    default=django.utils.timezone.now, verbose_name='created', editable=False, blank=True)),
+                ('modified', django_extensions.db.fields.ModificationDateTimeField(
+                    default=django.utils.timezone.now, verbose_name='modified', editable=False, blank=True)),
+                ('project_data',
+                 django_hstore.fields.SerializedDictionaryField()),
+                ('supplementary_data',
+                 django_hstore.fields.SerializedDictionaryField()),
                 ('created_by', models.ForeignKey(to=settings.AUTH_USER_MODEL)),
             ],
             options={
@@ -36,14 +41,21 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='DataPointClassification',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('created', django_extensions.db.fields.CreationDateTimeField(default=django.utils.timezone.now, verbose_name='created', editable=False, blank=True)),
-                ('modified', django_extensions.db.fields.ModificationDateTimeField(default=django.utils.timezone.now, verbose_name='modified', editable=False, blank=True)),
-                ('description', models.CharField(default=None, max_length=1000, null=True, blank=True)),
+                ('id', models.AutoField(
+                    verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('created', django_extensions.db.fields.CreationDateTimeField(
+                    default=django.utils.timezone.now, verbose_name='created', editable=False, blank=True)),
+                ('modified', django_extensions.db.fields.ModificationDateTimeField(
+                    default=django.utils.timezone.now, verbose_name='modified', editable=False, blank=True)),
+                ('description', models.CharField(
+                    default=None, max_length=1000, null=True, blank=True)),
                 ('created_by', models.ForeignKey(to=settings.AUTH_USER_MODEL)),
-                ('l0', models.ForeignKey(related_name='l0', default=None, blank=True, to='cbh_datastore_model.DataPoint', null=True)),
-                ('l1', models.ForeignKey(related_name='l1', default=None, blank=True, to='cbh_datastore_model.DataPoint', null=True)),
-                ('l2', models.ForeignKey(related_name='l2', default=None, blank=True, to='cbh_datastore_model.DataPoint', null=True)),
+                ('l0', models.ForeignKey(related_name='l0', default=None,
+                                         blank=True, to='cbh_datastore_model.DataPoint', null=True)),
+                ('l1', models.ForeignKey(related_name='l1', default=None,
+                                         blank=True, to='cbh_datastore_model.DataPoint', null=True)),
+                ('l2', models.ForeignKey(related_name='l2', default=None,
+                                         blank=True, to='cbh_datastore_model.DataPoint', null=True)),
                 ('project', models.ForeignKey(to='cbh_core_model.Project')),
             ],
             options={

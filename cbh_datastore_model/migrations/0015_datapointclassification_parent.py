@@ -14,7 +14,8 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='datapointclassification',
             name='parent',
-            field=models.ForeignKey(related_name='children', default=None, to='cbh_datastore_model.DataPointClassification', null=True),
+            field=models.ForeignKey(related_name='children', default=None,
+                                    to='cbh_datastore_model.DataPointClassification', null=True),
             preserve_default=True,
         ),
     ]
