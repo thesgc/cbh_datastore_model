@@ -22,7 +22,7 @@ class Migration(migrations.Migration):
             DataPoint = apps.get_model("cbh_datastore_model.DataPoint")
             DataPoint.objects.all().delete()
             DataPoint.objects.create(
-                custom_field_config_id=-1, created_by_id=-1, pk=1)
+                custom_field_config_id=-1, created_by_id=-1)
         except:
             pass
         try:
