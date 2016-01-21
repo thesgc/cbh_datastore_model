@@ -9,8 +9,6 @@ class Attachment(TimeStampedModel):
     number_of_rows = models.IntegerField(default=0)
     flowfile = models.ForeignKey(
         "flowjs.FlowFile", null=True, blank=True, default=None)
-    attachment_metadata = models.OneToOneField("cbh_datastore_model.DataPoint", null=True, blank=True, default=None,
-                                                help_text="Stores metadata for an uploaded file attachment (not activities) within a datapoint classification")
     created_by = models.ForeignKey("auth.User")
     data_point_classification = models.ForeignKey(
         "cbh_datastore_model.DataPointClassification")
