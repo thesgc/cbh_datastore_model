@@ -13,9 +13,9 @@ class Attachment(TimeStampedModel):
     data_point_classification = models.ForeignKey(
         "cbh_datastore_model.DataPointClassification")
     chosen_data_form_config = models.ForeignKey("cbh_core_model.DataFormConfig",
-                                                help_text="The template data form config whose last level corresponds to the data being added", null=True, default=None)
+                                                help_text="The template data form config whose last level corresponds to the data being added", null=True, default=None, blank=True)
     attachment_custom_field_config = models.ForeignKey("cbh_core_model.CustomFieldConfig",
-                                                       help_text="The schema of the table in this attachment")
+                                                       help_text="The schema of the table in this attachment", null=True, default=None, blank=True)
     sheet_name = models.CharField(max_length=100, default="")
 
 
